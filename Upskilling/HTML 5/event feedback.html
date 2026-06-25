@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script>
+
+function validatePhone(){
+    alert("Phone Number Checked");
+}
+
+function showFee(){
+    document.getElementById("fee").innerHTML=
+    "Event Fee : ₹500";
+}
+
+function submitForm(){
+    alert("Registration Successful");
+}
+
+function enlarge(img){
+    img.style.width="300px";
+}
+
+function countChars(){
+    let count=
+    document.getElementById("feedback").value.length;
+
+    document.getElementById("result").innerHTML=
+    count;
+}
+
+</script>
+
+</head>
+
+<body>
+
+Phone:
+<input type="text" onblur="validatePhone()">
+
+<br><br>
+
+<select onchange="showFee()">
+<option>Music</option>
+<option>Sports</option>
+</select>
+
+<p id="fee"></p>
+
+<button onclick="submitForm()">
+Submit
+</button>
+
+<br><br>
+
+<img src="event.jpg"
+width="150"
+ondblclick="enlarge(this)">
+
+<br><br>
+
+<textarea id="feedback"
+onkeyup="countChars()"></textarea>
+
+<p id="result"></p>
+
+</body>
+</html>
