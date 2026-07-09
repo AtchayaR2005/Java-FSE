@@ -2,4 +2,14 @@ package com.library.basicspringapplication;
 
 public class BookService {
 
+    private BookRepository bookRepository;
+
+    public void setBookRepository(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
+
+    public void showBook() {
+        System.out.println("Book Service");
+        bookRepository.displayBook();
+    }
 }
