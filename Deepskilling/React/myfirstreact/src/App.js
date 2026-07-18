@@ -1,15 +1,9 @@
-import Home from "./Components/Home";
-import About from "./Components/About";
-import Contact from "./Components/Contact";
-
 function App() {
-    return (
-        <div>
-            <Home />
-            <About />
-            <Contact />
-        </div>
-    );
+  return (
+    <div>
+      <h1>Welcome to the First Session of React</h1>
+    </div>
+  );
 }
 
 export default App;
