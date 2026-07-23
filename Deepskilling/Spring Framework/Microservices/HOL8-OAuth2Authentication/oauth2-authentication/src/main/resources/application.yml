@@ -1,0 +1,29 @@
+﻿spring:
+  application:
+    name: oauth2-authentication
+  security:
+    oauth2:
+      authorizationserver:
+        client:
+          demo-client:
+            registration:
+              client-id: demo-client
+              client-secret: "{noop}demo-secret"
+              client-authentication-methods:
+                - client_secret_basic
+              authorization-grant-types:
+                - authorization_code
+                - refresh_token
+                - client_credentials
+              redirect-uris:
+                - http://localhost:8080/login/oauth2/code/demo
+              scopes:
+                - openid
+                - profile
+                - read
+                - write
+server:
+  port: 9000
+logging:
+  level:
+    org.springframework.security: DEBUG
