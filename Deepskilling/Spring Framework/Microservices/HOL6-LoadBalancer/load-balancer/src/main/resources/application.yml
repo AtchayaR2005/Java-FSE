@@ -1,0 +1,10 @@
+﻿spring:
+  application:
+    name: load-balancer
+server:
+  port: 8091
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
