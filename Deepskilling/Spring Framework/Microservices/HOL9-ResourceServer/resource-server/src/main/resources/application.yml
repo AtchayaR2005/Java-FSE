@@ -1,0 +1,13 @@
+﻿spring:
+  application:
+    name: resource-server
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9000
+server:
+  port: 8093
+logging:
+  level:
+    org.springframework.security: DEBUG
