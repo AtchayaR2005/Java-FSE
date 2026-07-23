@@ -1,0 +1,64 @@
+﻿spring:
+  application:
+    name: resilience-gateway
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: user-service
+              uri: http://localhost:8081
+              predicates:
+                - Path=/api/users/**
+            - id: order-service
+              uri: http://localhost:8082
+              predicates:
+                - Path=/api/orders/**
+            - id: product-service
+              uri: http://localhost:8083
+              predicates:
+                - Path=/api/products/**
+            - id: inventory-service
+              uri: http://localhost:8084
+              predicates:
+                - Path=/api/inventory/**
+            - id: payment-service
+              uri: http://localhost:8085
+              predicates:
+                - Path=/api/payments/**
+server:
+  port: 8092
+resilience4j:
+  circuitbreaker:
+    instances:
+      userService:
+        slidingWindowSize: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5000
+      orderService:
+        slidingWindowSize: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5000
+      productService:
+        slidingWindowSize: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5000
+  timelimiter:
+    instances:
+      userService:
+        timeoutDuration: 3s
+      orderService:
+        timeoutDuration: 3s
+  retry:
+    instances:
+      userService:
+        maxAttempts: 3
+        waitDuration: 1000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,circuitbreakers
+  endpoint:
+    health:
+      show-details: always
